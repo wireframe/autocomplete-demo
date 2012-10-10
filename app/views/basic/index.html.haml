@@ -5,15 +5,25 @@
 
 %h2 Cache Inspector
 
-= link_to_function "Clear Cache", "cache = []"
+= link_to_function "Clear Cache", "$('#q').data('autocomplete').cache.length = 0;"
 
 :javascript
-  var cache = [];
+  var localCache = [];
   $("#q").autocomplete({
-    cache: cache,
+    cache: localCache,
     remoteSource: function(request, response) {
       return $.getJSON('/search', {q: request.term}, function(data) {
         response(data);
       });
-    }
+    },
+    // mirror server search and sorting behavior
+    filter: function(list, term) {
+      var matcher = new RegExp("^" + term, "i");
+      var results = $.grep(list, function(item) {
+        return matcher.test(item.value);
+      });
+      return results.sort(function(a, b) {
+        return a.value.toLocaleLowerCase().localeCompare(b.value.toLocaleLowerCase());
+      });
+    },
   });

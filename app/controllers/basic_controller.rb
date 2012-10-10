@@ -3,7 +3,7 @@ class BasicController < ApplicationController
   end
 
   def search
-    @movies = Movie.where('title like ?', "#{params[:q]}%").limit(10)
+    @movies = Movie.where('title like ?', "#{params[:q]}%").order("title asc").limit(10)
     @results = @movies.collect do |m|
       {:label => m.title}
     end
