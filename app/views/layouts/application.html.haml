@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title AutocompleteDemo
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = javascript_include_tag "//raw.github.com/socialcast/jquery.ui.autocomplete.localcache/master/jquery.ui.autocomplete.localcache.js"
+    = csrf_meta_tags
+  %body
+    = yield
