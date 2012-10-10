@@ -7,14 +7,28 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'iconv'
 Movie.delete_all
+
+batch_size = 100
+values = []
+connection = ActiveRecord::Base.connection
+timestamp = Time.now.to_s(:db)
 File.open(Rails.root.join('db', 'movies.list')).each_with_index do |l, index|
   next if index < 15
-  puts "Imported #{index}..." if index % 1000 == 0
+  puts "Processed #{index}..." if index % 1000 == 0
   ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
   valid_string = ic.iconv(l + ' ')[0..-2]
   title = valid_string.split("  ").first
   next if title.include?("{")
-  m = Movie.new
-  m.title = title
-  m.save!
+  values << "(#{connection.quote(title)}, #{connection.quote(timestamp)}, #{connection.quote(timestamp)})"
+
+  if values.length % batch_size == 0
+    puts "Inserted #{values.length} records..."
+    connection.execute "INSERT INTO movies (title, created_at, updated_at) values #{values.join(', ')}"
+    values = []
+  end
+end
+
+if values.any?
+  puts "Inserted #{values.length} records..."
+  connection.execute "INSERT INTO movies (title, created_at, updated_at) values #{values.join(', ')}"
 end
