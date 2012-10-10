@@ -1,10 +1,8 @@
 %h2 Autocomplete Demo
-
-= form_tag search_path do
+= form_tag search_path, :onsubmit => 'return false;' do
   = text_field_tag :q, '', :placeholder => 'Search Term'
 
 %h2 Cache Inspector
-
 = link_to_function "Clear Cache", "$('#q').data('autocomplete').cache.length = 0;"
 
 :javascript
