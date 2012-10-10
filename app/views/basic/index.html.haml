@@ -2,3 +2,13 @@
 
 = form_tag search_path do
   = text_field_tag :q, '', :placeholder => 'Search Term'
+
+:javascript
+  $("#q").autocomplete({
+    cache: [],
+    remoteSource: function(request, response) {
+      return $.getJSON('/search', {q: request.term}, function(data) {
+        response(data);
+      });
+    }
+  });
