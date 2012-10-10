@@ -8,4 +8,9 @@
     = javascript_include_tag "//raw.github.com/socialcast/jquery.ui.autocomplete.localcache/master/jquery.ui.autocomplete.localcache.js"
     = csrf_meta_tags
   %body
+    .navbar
+      .navbar-inner
+        %span.brand jQuery UI Autocomplete Demo
+        %ul.nav
+          %li= link_to 'Source', 'http://github.com/socialcast/jquery.ui.autocomplete.localcache'
     .container= yield
