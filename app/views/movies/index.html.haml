@@ -1,8 +1,11 @@
 %h2 Autocomplete Demo
+
+%p
+  Enter a movie title and wait for autocomplete results.
+  Once a result has returned, subsequent searches use the local cache before requesting new results from the server.
+
 = form_tag search_path, :onsubmit => 'return false;', :class => 'form-search' do
   = search_field_tag :q, '', :placeholder => 'Search for movie...', :class => 'search-query'
-  %span.help-block
-    Enter a movie title and wait for autocomplete results.
 
 %h2 Cache Inspector
 = link_to_function "Clear Cache", "$('#q').data('autocomplete').cache.length = 0;", :class => 'btn btn-danger'

@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title AutocompleteDemo
+    %title jQuery UI Autocomplete Demo
     = stylesheet_link_tag    "application", :media => "all"
     = stylesheet_link_tag    "//code.jquery.com/ui/1.8.24/themes/base/jquery-ui.css"
     = javascript_include_tag "application"
@@ -12,5 +12,6 @@
       .navbar-inner
         %span.brand jQuery UI Autocomplete Demo
         %ul.nav
-          %li= link_to 'Source', 'http://github.com/socialcast/jquery.ui.autocomplete.localcache'
+          %li= link_to 'Demo', 'http://autocompletedemo.heroku.com'
+          %li= link_to 'Sourcecode', 'http://github.com/socialcast/jquery.ui.autocomplete.localcache'
     .container= yield
