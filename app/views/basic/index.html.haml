@@ -1,11 +1,16 @@
-%h2 testing
+%h2 Autocomplete Demo
 
 = form_tag search_path do
   = text_field_tag :q, '', :placeholder => 'Search Term'
 
+%h2 Cache Inspector
+
+= link_to_function "Clear Cache", "cache = []"
+
 :javascript
+  var cache = [];
   $("#q").autocomplete({
-    cache: [],
+    cache: cache,
     remoteSource: function(request, response) {
       return $.getJSON('/search', {q: request.term}, function(data) {
         response(data);
