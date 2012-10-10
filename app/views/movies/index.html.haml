@@ -1,13 +1,16 @@
 %h2 Autocomplete Demo
-= form_tag search_path, :onsubmit => 'return false;' do
-  = text_field_tag :q, '', :placeholder => 'Search Term'
+= form_tag search_path, :onsubmit => 'return false;', :class => 'form-search' do
+  = search_field_tag :q, '', :placeholder => 'Search for movie...', :class => 'search-query'
+  %span.help-block
+    Enter a movie title and wait for autocomplete results.
 
 %h2 Cache Inspector
-= link_to_function "Clear Cache", "$('#q').data('autocomplete').cache.length = 0;"
+= link_to_function "Clear Cache", "$('#q').data('autocomplete').cache.length = 0;", :class => 'btn btn-danger'
 
 :javascript
   var localCache = [];
   $("#q").autocomplete({
+    delay: 10,
     cache: localCache,
     remoteSource: function(request, response) {
       return $.getJSON('/search', {q: request.term}, function(data) {
