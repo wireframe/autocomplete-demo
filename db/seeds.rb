@@ -17,8 +17,9 @@ File.open(Rails.root.join('db', 'movies.list')).each_with_index do |l, index|
   puts "Processed #{index}..." if index % 1000 == 0
   ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
   valid_string = ic.iconv(l + ' ')[0..-2]
-  title = valid_string.split("  ").first
-  next if title.include?("{")
+  title = valid_string.scan(/\"(.*)\"/).flatten.first
+  next if valid_string.include?("{") || valid_string.include?("(V)") || valid_string.include?("(TV)") || valid_string.include?("(VG)")
+  next if title.blank?
   values << "(#{connection.quote(title)}, #{connection.quote(timestamp)}, #{connection.quote(timestamp)})"
 
   if values.length % batch_size == 0
@@ -32,3 +33,5 @@ if values.any?
   puts "Inserted #{values.length} records..."
   connection.execute "INSERT INTO movies (title, created_at, updated_at) values #{values.join(', ')}"
 end
+
+puts "Imported #{Movie.count} records"
