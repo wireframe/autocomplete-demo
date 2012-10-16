@@ -1,14 +1,11 @@
 ---
-!binary "YWpheC1sb2FkZXIuZ2lm": ajax-loader-8bc9355c8746609c9b852dfc1ac19c7c.gif
-!binary "cmFpbHMucG5n": rails-be8732dac73d845ac5b142c8fb5f9fb0.png
-!binary "YXBwbGljYXRpb24uanM=": application-cc5023289eb51a7d75212f61b6f5253c.js
-!binary "YXBwbGljYXRpb24uY3Nz": application-6e4a4e54a1db25463b7b9cd6727059b3.css
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5lb3Q=": fontawesome-webfont-7cf1b0de49e2f8672c9ad6d9e382115f.eot
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5zdmc=": fontawesome-webfont-4d19fdd70a080778557b652cb4868557.svg
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC50dGY=": fontawesome-webfont-1e29be0bb354c9f664cbca7df9a966d8.ttf
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC53b2Zm": fontawesome-webfont-9c0e35b95bf9cea29c77678ebf71a29d.woff
-? !binary |-
-  dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3Mtd2hpdGUu
-  cG5n
-: twitter/bootstrap/glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
-!binary "dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3MucG5n": twitter/bootstrap/glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
+ajax-loader.gif: ajax-loader-8bc9355c8746609c9b852dfc1ac19c7c.gif
+rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
+application.js: application-cc5023289eb51a7d75212f61b6f5253c.js
+application.css: application-200dffc3b565b02a1af4c74bcd09a51c.css
+fontawesome-webfont.eot: fontawesome-webfont-7cf1b0de49e2f8672c9ad6d9e382115f.eot
+fontawesome-webfont.svg: fontawesome-webfont-4d19fdd70a080778557b652cb4868557.svg
+fontawesome-webfont.ttf: fontawesome-webfont-1e29be0bb354c9f664cbca7df9a966d8.ttf
+fontawesome-webfont.woff: fontawesome-webfont-9c0e35b95bf9cea29c77678ebf71a29d.woff
+twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
+twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
