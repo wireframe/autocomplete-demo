@@ -39,16 +39,21 @@
   // view the current cache entries
   $(document).on('click', '.cache_view', function(e) {
     e.preventDefault();
-    var dialog = $('<div />');
+    var dialog = $('<div title="Local Cache Entries" />');
     var table = $('<table class="table table-striped" />').appendTo(dialog);
     $.each($('#q').data('autocomplete').cache, function() {
       var entry = this;
       $('<tr><td>' + entry.label + '</td></tr>').appendTo(table);
     });
+    if (table.children().length === 0) {
+      $('<tr><td>' + No Cache Entries + '</td></tr>').appendTo(table);
+    }
 
     var options = {
       modal: true,
-      height: 300
+      height: 400,
+      width: 450
+      draggable: false
     };
     dialog.dialog(options, true);
   });
