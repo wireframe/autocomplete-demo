@@ -60,7 +60,7 @@
   });
 
   // clear the local cache
-  $(document).on('click', '.cache_clear', function() {
+  $(document).on('click', '.cache_clear', function(e) {
     e.preventDefault();
     $('#q').data('autocomplete').cache.length = 0;
   });
