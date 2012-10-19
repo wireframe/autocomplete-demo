@@ -11,7 +11,8 @@
   = search_field_tag :q, '', :placeholder => 'Search for movie...', :class => 'search-query'
 
 %h2 Cache Inspector
-= link_to_function "Clear Cache", "$('#q').data('autocomplete').cache.length = 0;", :class => 'btn btn-danger'
+= link_to "View Cache", "#", :class => 'btn btn-primary cache_view'
+= link_to "Clear Cache", "#", :class => 'btn btn-danger cache_clear'
 
 :javascript
   var localCache = [];
@@ -33,4 +34,27 @@
         return a.value.toLocaleLowerCase().localeCompare(b.value.toLocaleLowerCase());
       });
     },
+  });
+
+  // view the current cache entries
+  $(document).on('click', '.cache_view', function(e) {
+    e.preventDefault();
+    var dialog = $('<div />');
+    var table = $('<table class="table table-striped" />').appendTo(dialog);
+    $.each($('#q').data('autocomplete').cache, function() {
+      var entry = this;
+      $('<tr><td>' + entry.label + '</td></tr>').appendTo(table);
+    });
+
+    var options = {
+      modal: true,
+      height: 300
+    };
+    dialog.dialog(options, true);
+  });
+
+  // clear the local cache
+  $(document).on('click', '.cache_clear', function() {
+    e.preventDefault();
+    $('#q').data('autocomplete').cache.length = 0;
   });
