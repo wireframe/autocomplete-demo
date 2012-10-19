@@ -45,8 +45,9 @@
       var entry = this;
       $('<tr><td>' + entry.label + '</td></tr>').appendTo(table);
     });
-    if (table.children().length === 0) {
-      $('<tr><td>' + No Cache Entries + '</td></tr>').appendTo(table);
+    // add placeholder if no entries
+    if (!table.children().length) {
+      $('<tr><td>No Cache Entries</td></tr>').appendTo(table);
     }
 
     var options = {
